@@ -1,217 +1,464 @@
 # 📊 Retail Sales & Customer Intelligence
 
-A data analytics and business intelligence project that analyzes retail sales, customer behavior, product performance, regional performance, and payment trends using **MySQL, SQL, DAX, and Power BI**.
+A **Retail Sales and Customer Intelligence Analytics Project** that uses **MySQL, SQL, and Power BI** to analyze sales performance, customer behavior, product performance, regional trends, and payment patterns.
+
+The project transforms raw retail transaction data into meaningful **business insights and interactive dashboards** to support data-driven decision-making.
+
+---
+
+## 🚀 Project Overview
+
+**Retail Sales & Customer Intelligence** is an end-to-end data analytics project designed to demonstrate practical skills required for a **Data Analyst / Business Intelligence Analyst** role.
+
+The project combines:
+
+* 🗄️ **MySQL** for data storage and management
+* 🔎 **SQL** for data cleaning, transformation, and analysis
+* 📊 **Power BI** for interactive dashboards and visualization
+* 📈 **DAX** for business metrics and KPIs
+* 💡 Business analysis for actionable insights
 
 ---
 
 ## 🎯 Project Objective
 
-The objective of this project is to transform retail transaction data into meaningful business insights through SQL analysis and an interactive Power BI dashboard.
+The main objective is to analyze retail transaction data and answer important business questions such as:
 
-The project focuses on:
+* Which products generate the highest revenue?
+* Which categories perform best?
+* Who are the most valuable customers?
+* Which regions generate the most sales?
+* What payment methods are most commonly used?
+* How do discounts affect revenue?
+* What are the overall sales and revenue trends?
+* Which customers contribute the most to business revenue?
 
-- 📈 Sales and revenue analysis
-- 👥 Customer behavior and purchasing patterns
-- 🛍️ Product performance
-- 🌍 Regional sales performance
-- 🏷️ Category-wise analysis
-- 💳 Payment method analysis
-- 📅 Monthly revenue trends
-- 🏆 Top customers and products
+---
+
+## 🗂️ Dataset
+
+The project uses a retail sales transaction dataset containing **5,000 sales records**.
+
+### Dataset Information
+
+| Attribute      | Description                   |
+| -------------- | ----------------------------- |
+| Order ID       | Unique transaction identifier |
+| Order Date     | Date of purchase              |
+| Customer ID    | Customer identifier           |
+| Product ID     | Product identifier            |
+| Product Name   | Name of the product           |
+| Category       | Product category              |
+| Region         | Sales region                  |
+| Quantity       | Number of units purchased     |
+| Unit Price     | Price per unit                |
+| Discount       | Discount applied              |
+| Payment Method | Method used for payment       |
+
+### Dataset Statistics
+
+* **5,000** sales transactions
+* **1,000** unique customers
+* **20** unique products
+* **3** product categories
+* Multiple sales regions
+* Multiple payment methods
 
 ---
 
 ## 🛠️ Technologies Used
 
-| Technology | Purpose |
-|---|---|
-| **MySQL** | Database management and data storage |
-| **SQL** | Data analysis and business queries |
-| **Power BI** | Interactive dashboards and visualization |
-| **DAX** | KPI and analytical calculations |
-| **GitHub** | Project documentation and portfolio |
+| Technology      | Purpose                                   |
+| --------------- | ----------------------------------------- |
+| 🐬 **MySQL**    | Database management                       |
+| 🔎 **SQL**      | Data analysis and transformation          |
+| 📊 **Power BI** | Interactive dashboards                    |
+| 📐 **DAX**      | KPIs and calculated measures              |
+| 📝 **GitHub**   | Version control and project documentation |
 
 ---
 
-## 📂 Project Structure
+## 🔄 Data Analytics Workflow
+
+```text
+              Raw Retail Data
+                     │
+                     ▼
+              ┌──────────────┐
+              │    MySQL     │
+              │   Database   │
+              └──────┬───────┘
+                     │
+                     ▼
+              ┌──────────────┐
+              │     SQL      │
+              │   Analysis   │
+              └──────┬───────┘
+                     │
+                     ▼
+          ┌─────────────────────┐
+          │ Data Transformation │
+          └──────────┬──────────┘
+                     │
+                     ▼
+              ┌──────────────┐
+              │   Power BI   │
+              │   Dashboard  │
+              └──────┬───────┘
+                     │
+                     ▼
+             Business Insights
+```
+
+---
+
+# 🗄️ MySQL & SQL Analysis
+
+The retail dataset is stored in a **MySQL database** and analyzed using SQL queries.
+
+### Key SQL Analysis
+
+The project performs analysis including:
+
+* Total revenue calculation
+* Total sales
+* Customer-level revenue
+* Product-level performance
+* Category performance
+* Regional sales analysis
+* Payment method analysis
+* Discount analysis
+* Customer ranking
+* Revenue contribution
+* Top-performing customers
+* Top-performing products
+
+### Revenue Calculation
+
+Revenue is calculated using:
+
+```sql
+Quantity × Unit_Price × (1 - Discount)
+```
+
+This provides a more realistic revenue measure after accounting for discounts.
+
+---
+
+# 📊 Power BI Dashboard
+
+The processed data is connected to **Power BI** to create interactive business intelligence dashboards.
+
+### Dashboard Areas
+
+#### 💰 Sales Performance
+
+* Total Revenue
+* Total Sales
+* Total Quantity
+* Average Order Value
+* Revenue trends
+
+#### 👥 Customer Intelligence
+
+* Customer revenue
+* Top customers
+* Customer ranking
+* Customer contribution
+* Purchase behavior
+
+#### 📦 Product Analysis
+
+* Best-selling products
+* Product revenue
+* Product quantity
+* Category performance
+
+#### 🌎 Regional Analysis
+
+* Revenue by region
+* Sales by region
+* Regional performance comparison
+
+#### 💳 Payment Analysis
+
+* Payment method distribution
+* Revenue by payment method
+* Transaction trends
+
+---
+
+# 📈 Key KPIs
+
+The Power BI dashboard includes important business KPIs such as:
+
+```text
+💰 Total Revenue
+🛒 Total Orders
+📦 Total Quantity Sold
+👥 Total Customers
+📦 Total Products
+💵 Average Order Value
+🏆 Top Customer
+⭐ Top Product
+```
+
+---
+
+# 📐 DAX Measures
+
+Example DAX measures used for business analysis:
+
+### Total Revenue
+
+```DAX
+Total Revenue =
+SUMX(
+    Sales,
+    Sales[Quantity] *
+    Sales[Unit_Price] *
+    (1 - Sales[Discount])
+)
+```
+
+### Total Quantity
+
+```DAX
+Total Quantity =
+SUM(Sales[Quantity])
+```
+
+### Average Order Value
+
+```DAX
+Average Order Value =
+DIVIDE(
+    [Total Revenue],
+    DISTINCTCOUNT(Sales[Order_ID])
+)
+```
+
+### Total Customers
+
+```DAX
+Total Customers =
+DISTINCTCOUNT(Sales[Customer_ID])
+```
+
+---
+
+# 💡 Business Insights
+
+The analysis helps identify:
+
+* High-performing products and categories
+* High-value customers
+* Strong and weak sales regions
+* Customer purchasing patterns
+* Revenue contribution by category
+* Popular payment methods
+* Impact of discounts on revenue
+* Opportunities for improving sales performance
+
+These insights can help businesses improve **customer targeting, product strategy, regional planning, and revenue optimization**.
+
+---
+
+# 📊 Dashboard Features
+
+The Power BI dashboard provides:
+
+* Interactive filters
+* Slicers
+* KPI cards
+* Bar charts
+* Line charts
+* Pie/donut charts
+* Customer analysis
+* Product analysis
+* Regional analysis
+* Payment analysis
+* Interactive business insights
+
+---
+
+# 📁 Project Structure
 
 ```text
 Retail-Sales-Customer-Intelligence/
+│
+├── README.md
 │
 ├── dataset/
 │   └── sales.csv
 │
 ├── sql/
-│   └── analysis_queries.sql
+│   └── retail_analytics.sql
 │
 ├── powerbi/
 │   └── Retail_Sales_Customer_Intelligence.pbix
 │
-├── screenshots/
-│   ├── executive_overview.png
-│   ├── customer_intelligence.png
-│   └── product_regional_analysis.png
-│
-└── README.md
+└── screenshots/
+    ├── dashboard.png
+    └── analysis.png
+```
 
-📊 Dataset
+> The folder structure can be adjusted according to the files available in the repository.
 
-The dataset contains 5,000 retail transactions with information about orders, customers, products, categories, regions, quantities, prices, discounts, and payment methods.
+---
 
-Dataset Columns
-Column	Description
-Order_ID	Unique order identifier
-Order_Date	Date of the transaction
-Customer_ID	Customer identifier
-Product_ID	Product identifier
-Product_Name	Name of the product
-Category	Product category
-Region	Sales region
-Quantity	Quantity purchased
-Unit_Price	Price per unit
-Discount	Applied discount
-Payment_Method	Payment method used
-Dataset Summary
-5,000 transactions
-1,000 customers
-20 products
-3 product categories
-5 regions
-Data period: 2025
-💰 Key Business Metrics
-Metric	Value
-Total Revenue	₹123.08M
-Total Orders	5,000
-Total Customers	1,000
-Total Quantity Sold	15,000
-Average Order Value	₹24.62K
-📑 Power BI Dashboard
+# 🚀 How to Run the Project
 
-The Power BI report contains three interactive pages.
+## Step 1 — Setup MySQL
 
-1️⃣ Executive Sales Overview
+Create the database:
 
-Provides a high-level view of overall business performance.
+```sql
+CREATE DATABASE retail_analytics;
+```
 
-Includes
-Total Revenue
-Total Orders
-Total Customers
-Total Quantity
-Average Order Value
-Monthly Revenue Trend
-Revenue by Category
-Revenue by Region
-Interactive slicers
-Dashboard Preview
-<img width="1204" height="680" alt="Screenshot 2026-10-06 205301" src="https://github.com/user-attachments/assets/cdeed023-e210-405f-9f25-b6858c961988" />
+Select the database:
 
-2️⃣ Customer Intelligence
+```sql
+USE retail_analytics;
+```
 
-Focuses on customer value and purchasing behavior.
+Import the retail sales dataset into MySQL.
 
-Includes
-Total Customers
-Average Customer Revenue
-Average Orders per Customer
-Returning Customers
-Top 10 Customers
-Customer Revenue by Category
-Customer Revenue by Payment Method
-Customer Performance Details
-Customer Revenue by Region
-Dashboard Preview
-<img width="1211" height="681" alt="Screenshot 2026-10-06 205344" src="https://github.com/user-attachments/assets/8ca42230-2894-40d5-8c2d-64aeac58903f" />
+---
 
-3️⃣ Product & Regional Analysis
+## Step 2 — Perform SQL Analysis
 
-Provides detailed product and regional performance analysis.
+Run SQL queries to analyze:
 
-Includes
-Top 10 Products by Revenue
-Products by Quantity Sold
-Revenue by Region
-Monthly Revenue by Category
-Category × Region Revenue Matrix
-Interactive filtering
-Dashboard Preview
-<img width="1209" height="680" alt="Screenshot 2026-10-06 205414" src="https://github.com/user-attachments/assets/ef649e34-81f4-423f-85b8-610b6ae60d4d" />
+```text
+Sales
+Customers
+Products
+Categories
+Regions
+Payment Methods
+Revenue
+Discounts
+```
 
-🔍 SQL Analysis
+---
 
-The project includes SQL queries for:
+## Step 3 — Connect MySQL to Power BI
 
-Total revenue calculation
-Total orders and customers
-Average Order Value
-Monthly revenue analysis
-Category performance
-Regional performance
-Product performance
-Payment method analysis
-Top customer analysis
-Customer ranking using RANK()
-Month-over-month analysis using LAG()
-Category and region analysis
-Advanced SQL Concepts Used
-GROUP BY
-ORDER BY
-Aggregate Functions
-RANK()
-LAG()
-Window Functions
-CTEs
-LIMIT
-📈 Key Business Insights
+Open **Power BI Desktop**.
 
-Based on the analysis:
+Navigate to:
 
-💰 Total revenue generated was approximately ₹123.08M.
-🏷️ Electronics was the highest-revenue product category.
-🌍 East was the highest-performing region by revenue.
-📱 Smartphone generated the highest product revenue.
-💳 Card was the highest-revenue payment method.
-📅 Monthly revenue remained relatively consistent throughout 2025.
-🔄 Project Workflow
-Raw Retail Data
-       ↓
-     MySQL
-       ↓
-  SQL Analysis
-       ↓
-   DAX Measures
-       ↓
-    Power BI
-       ↓
-Interactive Dashboard
-       ↓
- Business Insights
-💡 Skills Demonstrated
-SQL
-MySQL
+```text
+Home → Get Data → MySQL Database
+```
+
+Enter your MySQL server details and select:
+
+```text
+retail_analytics
+```
+
+Load the required tables into Power BI.
+
+---
+
+## Step 4 — Build Dashboard
+
+Create:
+
+* Data relationships
+* Calculated measures
+* KPI cards
+* Charts
+* Slicers
+* Interactive filters
+
+Then publish or share the completed Power BI dashboard.
+
+---
+
+# 🎯 Skills Demonstrated
+
+This project demonstrates practical skills in:
+
+* SQL
+* MySQL
+* Power BI
+* DAX
+* Data Cleaning
+* Data Transformation
+* Data Visualization
+* Business Intelligence
+* Customer Analytics
+* Sales Analytics
+* KPI Development
+* Business Analysis
+* Data-driven Decision Making
+
+---
+
+# 🌟 Why This Project?
+
+This project demonstrates an **end-to-end Data Analyst workflow**:
+
+```text
+Raw Data
+   ↓
+Database
+   ↓
+SQL Analysis
+   ↓
+Data Transformation
+   ↓
 Power BI
-DAX
-Data Analysis
-Data Visualization
-Business Intelligence
-Customer Analytics
-Retail Analytics
-KPI Development
-Dashboard Development
-Data Storytelling
-🚀 Project Highlights
+   ↓
+Dashboard
+   ↓
+Business Insights
+```
 
-This project demonstrates the complete workflow of a data analytics project:
+It showcases the ability to transform raw transactional data into useful information for business decision-making.
 
-Data → Database → SQL → Analysis → Power BI → Business Insights
+---
 
-It combines technical SQL skills with interactive business intelligence and dashboard development.
+# 🔮 Future Enhancements
 
-👨‍💻 Author
-Naresh Kumar
+Possible improvements include:
+
+* 🤖 Customer segmentation using Machine Learning
+* 📈 Sales forecasting
+* 🧠 Customer churn prediction
+* 🎯 RFM customer analysis
+* 💰 Customer Lifetime Value prediction
+* 📊 Advanced Power BI dashboard
+* ☁️ Cloud database integration
+* 🔄 Automated data refresh
+* 📱 Mobile-friendly dashboard
+* 🔔 Automated business alerts
+
+---
+
+# 👨‍💻 Author
+
+**P. Naresh Kumar**
 
 B.Tech – Artificial Intelligence & Data Science
 
-Interested in Data Analytics, Business Intelligence, SQL, Power BI, and Data Visualization.
+Aspiring **Data Analyst | Business Intelligence Analyst**
 
-⭐ If you find this project useful, consider giving the repository a star!
+---
+
+## 🔗 Project Repository
+
+**GitHub:**
+https://github.com/nareshkumarpunganoor-crypto/Retail-Sales-Customer-Intelligence
+
+---
+
+## ⭐ If You Like This Project
+
+If this project helped you understand **SQL, MySQL, Power BI, and retail analytics**, consider giving the repository a ⭐.
+
+---
